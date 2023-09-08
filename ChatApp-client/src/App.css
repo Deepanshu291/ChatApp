@@ -1,0 +1,139 @@
+.main-container {
+  @apply p-5  sm:h-screen sm:w-screen flex flex-col justify-center gap-4 items-center bg-neutral-950;
+}
+
+.chat-container{
+  @apply h-[80vh] w-[80vw]   rounded-xl border-[#FCA311] bg-neutral-900 border-solid border-[.2rem]  flex justify-between flex-wrap;
+}
+
+.contact-container {
+  @apply h-full   md:w-[40%] lg:w-[30%] xl:w-[20%]    gap-2  z-10 flex lg:flex flex-col  justify-between bg-transparent  
+}
+
+.header {
+  @apply flex items-center gap-4 justify-center;
+}
+.header img {
+  @apply h-20;
+}
+.header h1 {
+  @apply text-transparent font-bold capitalize;
+  -webkit-text-stroke: 2px #fff;
+}
+
+form {
+  @apply flex flex-col  gap-8 bg-transparent border-solid border-[0.2rem] border-orange-300 backdrop-blur-xl px-20 py-12 rounded-3xl;
+}
+
+form input {
+  @apply gap-y-16 bg-transparent text-[white] w-full text-base p-4 rounded-[0.4rem] border-[0.1rem] border-solid border-orange-200 focus:border-[0.1rem] focus:border-solid focus:border-[#fcb621];
+}
+
+form input:focus {
+  outline: none;
+}
+
+a{
+  @apply text-white
+}
+
+/* button {
+  @apply  px-4 bg-white text-[white] font-[bold]  cursor-pointer text-base uppercase  rounded-[0.4rem] border-orange-200 border-solid border-2 hover:bg-[#fcb621];
+} */
+
+span {
+  @apply text-[white] uppercase;
+}
+span a {
+  @apply text-[#e65410] no-underline font-[bold];
+}
+
+.setpic{
+  @apply flex justify-center items-center flex-col gap-12 bg-[#131324] h-screen w-screen;
+}
+
+.loader {
+  max-inline-size: 100%;
+}
+
+#htag{
+  @apply text-transparent text-9xl absolute flex justify-center items-center;
+  -webkit-text-stroke:2px #fff;
+}
+
+.flexbox{
+  @apply  flex flex-col gap-4 lg:flex lg:flex-row lg:justify-between  lg:items-center lg:gap-52 my-4;
+}
+
+.title-container h1 {
+  @apply text-[white] font-bold gap-7 my-4;
+}
+.avatars {
+  @apply flex gap-8  flex-wrap;
+}
+.avatars .avatar {
+  @apply flex justify-center items-center transition-[0.5s] duration-[ease-in-out] p-[0.4rem] rounded-[5rem] border-[0.4rem] border-solid border-transparent;
+}
+.avatars .avatar img {
+  @apply h-44 transition-[0.5s] duration-[ease-in-out];
+}
+.avatars .selected {
+  @apply border-[0.4rem] rounded-[50%] border-solid border-[#ffce64];
+}
+.submit-btn {
+  @apply bg-[#fcb621] text-white  font-extrabold cursor-pointer text-xl capitalize px-8 py-4 rounded-[0.4rem] border-[none] hover:bg-[#ffce64];
+}
+
+
+
+.sidescroll::-webkit-scrollbar{
+  @apply w-[0.2rem];
+}
+
+.sidescroll::-webkit-scrollbar-thumb{
+  @apply bg-[#ffce64] w-[0.1rem] rounded-2xl;
+}
+
+.contacts {
+  @apply flex flex-col p-3  overflow-auto gap-[0.8rem]  ;
+}
+.contacts::-webkit-scrollbar {
+  @apply w-[0.2rem];
+}
+.contacts::-webkit-scrollbar-thumb {
+  @apply bg-[#ffce64] w-[0.1rem] rounded-2xl; 
+}
+.contacts .contact {
+  @apply  border-solid border-[.1rem] bg-black  min-h-[5rem]   cursor-pointer w-full flex gap-4 items-center transition-[0.5s] duration-[ease-in-out] p-[0.4rem] rounded-lg;
+}
+.contacts .contact .avatar img {
+  @apply h-12;
+}
+.contacts .contact .username h3 {
+  @apply text-[white];
+}
+
+.selected {
+  @apply bg-neutral-950  border-[#FCA311]  border-[.1rem] text-transparent lg:text-3xl font-bold  rounded-2xl   ;
+  -webkit-text-stroke:1px white ;
+}
+
+/* .selected img{
+  @apply h-20 
+} */
+
+
+.current-user {
+  @apply bg-[#FCA311] h-36 p-2 flex justify-center items-center gap-8 lg:gap-2;
+}
+.current-user .avatar img {
+  @apply h-16;
+  max-inline-size: 100%;
+}
+.current-user .username h2 {
+  @apply text-[white]  lg:text-base;
+}
+
+svg{
+  font-size: 2rem;
+}
