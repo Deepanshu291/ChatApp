@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  front:
+      build:
+        context: ./Chatclient
+        dockerfile: Dockerfile
+      volumes:
+        - /Chatclient:/app
+      ports:
+        - "8080:8080"
+      image: chatclient
+      container_name: chatclient
+      networks:
+        - ChatApp
+      depends_on:
+        - backend 
+  backend:
+      build:
+        context: /Chatserver
+        dockerfile: Dockerfile
+      volumes:
+        - /Chatserver:/app/src
+      ports:
+        - "5000:5500"
+      image: chatserver
+      container_name: chatserver
+      networks:
+        - ChatApp
+networks:
+  ChatApp:
+volumes:
+  web-root:
+    driver: local
+  node_modules:

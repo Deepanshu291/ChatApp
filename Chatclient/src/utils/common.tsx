@@ -7,8 +7,8 @@ import { Options } from "react-lottie";
 
 
 // const url = "https://chat-app-server-ts.vercel.app";
-// const url = "http://127.0.0.1:5000/";
-const url = "https://chatone-server-ts.vercel.app/";
+const url = "http://127.0.0.1:5000/";
+// const url = "https://chatone-server-ts.vercel.app/";
 
 export const api = axios.create({
       baseURL: url,
