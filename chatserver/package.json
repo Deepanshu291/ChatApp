@@ -7,12 +7,12 @@
     "build": "rimraf dist && tsc",
     "start": "node ./dist/src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/app.js\"" ,
-    "vercel-build":"echo hello",
-    "ts.check":"tsc --project tsconfig.json",
-    "add-build":"git add dist"  
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/src/app.js\"",
+    "vercel-build": "echo hello",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
-  "pre-commit":[
+  "pre-commit": [
     "ts.check",
     "build",
     "add-build"
@@ -21,17 +21,27 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cookie-parser": "^1.4.4",
+    "@types/express-session": "^1.17.7",
+    "@types/swagger-jsdoc": "^6.0.1",
+    "@types/swagger-ui-express": "^4.1.3",
+    "@types/yamljs": "^0.2.31",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.3",
     "morgan": "^1.10.0",
-    "socket.io": "^4.7.2"
+    "socket.io": "^4.7.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

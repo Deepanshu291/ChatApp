@@ -1,0 +1,178 @@
+openapi: 3.0.0
+info:
+  title: ChatOne API
+  version: 1.0.0
+tags:
+  - name: Chat
+    description: Chat-related endpoints
+  - name: Authentication
+    description: User authentication endpoints
+paths:
+  /chat/addmsg:
+    post:
+      summary: Add a new chat message
+      description: Endpoint for adding a new chat message.
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fromUser:
+                  type: string
+                  description: ID or username of the sender.
+                toUser:
+                  type: string
+                  description: ID or username of the recipient.
+                msg:
+                  type: string
+                  description: The chat message content.
+      responses:
+        '201':
+          description: Chat message added successfully.
+  /chat/getmsg:
+    post:
+      summary: Get chat messages
+      description: Endpoint for getting chat messages between two users.
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fromUser:
+                  type: string
+                  description: ID or username of the sender.
+                toUser:
+                  type: string
+                  description: ID or username of the recipient.
+      responses:
+        '200':
+          description: Chat messages retrieved successfully.
+
+  /auth/login:
+    post:
+      summary: Authenticate a user
+      description: Endpoint for user authentication.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: User's username.
+                password:
+                  type: string
+                  description: User's password.
+      responses:
+        '200':
+          description: Authentication successful.
+  /auth/register:
+    post:
+      summary: Register a new user
+      description: Endpoint for user registration.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: User's desired username.
+                email:
+                  type: string
+                  description: User's email.
+                password:
+                  type: string
+                  description: User's desired password.
+      responses:
+        '201':
+          description: User registration successful.
+  /auth:
+    get:
+      summary: Search for a user
+      description: Search for a user by username or email.
+      tags:
+        - Authentication
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Keyword to search for users by username or email.
+      responses:
+        '200':
+          description: User found.
+  /auth/alluser/{id}:
+    get:
+      summary: Get all users by ID
+      description: Get all users except the one with the specified ID.
+      tags:
+        - Authentication
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: User ID.
+      responses:
+        '200':
+          description: Users found by ID.
+  /auth/setpic/{id}:
+    post:
+      summary: Set user avatar picture
+      description: Set the avatar picture for a user.
+      tags:
+        - Authentication
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: User ID.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  description: User's avatar image (base64 string).
+      responses:
+        '200':
+          description: Avatar picture set successfully.
+  /auth/logout/{id}:
+    get:
+      summary: Logout a user
+      description: Logout a user by ID.
+      tags:
+        - Authentication
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: User ID.
+      responses:
+        '200':
+          description: User logged out successfully.

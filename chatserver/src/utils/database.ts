@@ -10,7 +10,7 @@ mongoose.Promise = global.Promise;
 export const connectDB = async () => {
     try {
      const conn:Mongoose = await connect(process.env.MONGO_URI || 'mongodb://localhost:27017/DB Name',{
-        serverSelectionTimeoutMS:5000,
+        serverSelectionTimeoutMS:20000,
     })
     console.log(`MongoDB Connection Succeeded.`)
     } catch (error) {

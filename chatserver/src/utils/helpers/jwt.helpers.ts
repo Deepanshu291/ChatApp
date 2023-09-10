@@ -3,18 +3,20 @@ import { CustomError } from "./error.helpers"
 
 var secrect = process.env.JWT_SECRECT || "deepanshu"
 
-export const genrateToken = function(id:any){
-    return  sign({id}, process.env.JWT_SECRECT!,{
+export const genrateToken = function(data:any){
+    console.log(secrect);
+    
+    return  sign({data}, process.env.JWT_SECRECT!,{
         expiresIn:"30d"
     })
 }
 
-export const verifyToken= (token:any):Jwt & JwtPayload=>{
-    console.log(token);
+export const verifyToken= (token:any)=>{
+    // console.log(token);
     
     try {
-        const res =  verify(token, process.env.JWT_SECRECT!) as Jwt & JwtPayload || "null"
-        console.log(res.header);
+        const res =  verify(token, process.env.JWT_SECRECT!) 
+        console.log(res);
         return res
     } catch (error) {
         throw new CustomError({

@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { Childrens, IApiContextProps,  } from "../utils/types";
 import axios from "axios";
+import { apikey } from "../env";
 
 
 
@@ -17,7 +18,7 @@ export const APIProvider = ({children}:Childrens) => {
     for (let index = 0; index < 5; index++) {
       
       const img = await axios.get(
-        `${api}/${Math.round(Math.random() * 1000)}.png?apikey=SqsxU4BrKjWLaQ`,
+        `${api}/${Math.round(Math.random() * 1000)}.png?apikey=${apikey}`,
         {
           withCredentials: false,
         }

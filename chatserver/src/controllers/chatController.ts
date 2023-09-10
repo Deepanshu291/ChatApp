@@ -10,7 +10,7 @@ import { IMessage } from "../../@types/message.model";
 export const getMessage = expressAsyncHandler(async (req:Request, res:Response, next:NextFunction) => {
     try {
         const {fromUser , toUser } = req.body
-
+        
        await ChatModel.find({
         $and:[
             {users:{$elemMatch:{$eq:fromUser}}},

@@ -9,6 +9,10 @@ import { connectDB } from "./utils/database";
 import http from 'http'
 import {Server, Socket} from 'socket.io';
 import { IUserModal } from "../@types/user.model";
+import session from 'express-session'
+import swaggerui from 'swagger-ui-express'
+import { SwaggerSpecs } from "./utils/swaggerdoc";
+import YAML from 'yamljs'
 
 
 dotenv.config();
@@ -16,34 +20,33 @@ const app:Express = express();
 connectDB()
 const httpserver =  http.createServer(app)
 const corsOptions:CorsOptions ={
-   origin:'https://chatone.netlify.app', 
+   origin:'', 
    credentials:true,   
-            //access-control-allow-credentials:true
 }
 
-// let ALLOWED_ORIGINS = [', 'https://chatone.vercel.app','https://chatone.netlify.app' ];
 
-// app.use((req, res, next) => {
-//     let origin = req.headers.origin;
-//     let theOrigin = (ALLOWED_ORIGINS.indexOf(origin!) >= 0) ? origin : ALLOWED_ORIGINS[0];
-//     res.header("Access-Control-Allow-Origin", theOrigin);
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-//     next();
-// })
+const swaggerDoc = YAML.load("swagger.yml")
 
 app.use(express.json())
    .use(morgan("dev"))
    .use(bodyParser.json())
    .use(bodyParser.urlencoded({extended:true}))
+   .use(session({
+      secret:"yoursecret",
+      saveUninitialized:true,
+      resave:true,
+   }))
    
 app.use(cors(corsOptions))
 
 app.use("/api",router)
+
+app.use("/",swaggerui.serve, swaggerui.setup(swaggerDoc))
    
-app.get("/", (req: Request, res: Response) => {
-  res.send("Server working build by TypeScript 🔥");
-});
+// app.get("/", (req: Request, res: Response) => {
+//    req.session.save((e)=> {})
+//   res.send("Server working build by TypeScript 🔥");
+// });
 
 app.use(notFound)
    .use(errorHandler)
@@ -53,7 +56,8 @@ app.use(notFound)
 
 const port =process.env.PORT || 5000;
 
-httpserver.listen(port, () => `Server running on port port 🔥`);
+httpserver.listen(port, () => console.log(`Server running on port ${port} 🔥`));
+;
 
 
 const io = new Server(httpserver,{
@@ -62,6 +66,8 @@ const io = new Server(httpserver,{
    }
 })
 
+
+//Socket connection
 
 io.on('connection',(socket:Socket)=>{
    console.log('connected to socket.io....');

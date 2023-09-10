@@ -63,6 +63,8 @@ export const loginUser = expressAsyncHandler(
                 isAvatar:user.isAvatar,
                 token:genrateToken(user._id)
             })
+
+            res.locals.user = user
         }else{
             throw new CustomError({
                 message:"Invalid Email or Password"

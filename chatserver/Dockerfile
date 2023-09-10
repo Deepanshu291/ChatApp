@@ -16,3 +16,4 @@ COPY . .
 EXPOSE 5500 
 
 CMD ["yarn", "start"]
+
